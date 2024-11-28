@@ -1,22 +1,41 @@
 {
-    "name": "qqq",
-    "version": "1.0.0",
+    "name": "askly",
+    "version": "0.1.0",
     "description": "",
     "main": "index.js",
     "scripts": {
         "dev": "ts-node -r tsconfig-paths/register _test/index.ts",
-        "dev2": "ts-node -r tsconfig-paths/register src/index2.ts"
+        "build": "npm run format && npm run build:mjs && npm run build:cjs && npm run build:types && npm pack",
+        "build:mjs": "tsc --project tsconfig.mjs.json && tsc-alias -p tsconfig.mjs.json",
+        "build:cjs": "tsc --project tsconfig.cjs.json && tsc-alias -p tsconfig.cjs.json",
+        "build:types": "tsc --project tsconfig.types.json && tsc-alias -p tsconfig.types.json",
+        "build:min": "npm run format && rollup -c && npm pack",
+        "format": "prettier --ignore-path .prettierignore --write src/"
     },
+    "files": [
+        "dist",
+        "package.json"
+    ],
+    "exports": {
+        ".": {
+            "import": "./dist/index.mjs",
+            "require": "./dist/index.cjs"
+        }
+    },
+    "types": "./dist/index.d.ts",
     "keywords": [],
     "author": "",
     "license": "ISC",
     "devDependencies": {
+        "@rollup/plugin-typescript": "^12.1.1",
         "@types/node": "^22.9.0",
         "eslint": "^9.15.0",
         "prettier": "^3.3.3",
+        "rollup": "^4.27.4",
         "ts-node": "^10.9.2",
         "tsc-alias": "^1.8.10",
         "tsconfig-paths": "^4.2.0",
+        "tslib": "^2.8.1",
         "typescript": "^5.6.3"
     }
 }
