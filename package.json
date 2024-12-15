@@ -1,6 +1,6 @@
 {
-    "name": "askly",
-    "version": "0.2.0",
+    "name": "@guiurm/askly",
+    "version": "1.0.0-rc.1",
     "description": "",
     "main": "index.js",
     "scripts": {
