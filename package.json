@@ -1,8 +1,9 @@
 {
     "name": "@guiurm/askly",
-    "version": "1.0.0-rc.1",
+    "version": "1.0.0-rc.2",
     "description": "",
-    "main": "index.js",
+    "main": "./dist/mjs/index.mjs",
+    "type": "module",
     "scripts": {
         "dev": "ts-node -r tsconfig-paths/register _test/index.ts",
         "build": "npm run format && rollup -c",
