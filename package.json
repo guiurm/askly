@@ -5,11 +5,7 @@
     "main": "index.js",
     "scripts": {
         "dev": "ts-node -r tsconfig-paths/register _test/index.ts",
-        "build": "npm run format && npm run build:mjs && npm run build:cjs && npm run build:types && npm pack",
-        "build:mjs": "tsc --project tsconfig.mjs.json && tsc-alias -p tsconfig.mjs.json",
-        "build:cjs": "tsc --project tsconfig.cjs.json && tsc-alias -p tsconfig.cjs.json",
-        "build:types": "tsc --project tsconfig.types.json && tsc-alias -p tsconfig.types.json",
-        "build:min": "npm run format && rollup -c && npm pack",
+        "build": "npm run format && rollup -c",
         "format": "prettier --ignore-path .prettierignore --write src/"
     },
     "files": [
@@ -18,12 +14,15 @@
     ],
     "exports": {
         ".": {
-            "import": "./dist/index.mjs",
-            "require": "./dist/index.cjs"
+            "import": "./dist/mjs/index.mjs",
+            "require": "./dist/cjs/index.cjs"
         }
     },
-    "types": "./dist/index.d.ts",
+    "types": "./dist/types/index.d.ts",
     "keywords": [],
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/@guiurm"
+    },
     "author": "",
     "license": "ISC",
     "devDependencies": {
@@ -32,6 +31,7 @@
         "eslint": "^9.15.0",
         "prettier": "^3.3.3",
         "rollup": "^4.27.4",
+        "rollup-plugin-dts": "^6.1.1",
         "ts-node": "^10.9.2",
         "tsc-alias": "^1.8.10",
         "tsconfig-paths": "^4.2.0",
