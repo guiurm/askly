@@ -1,14 +1,16 @@
 {
     "name": "@guiurm/askly",
-    "version": "1.0.0-rc.2",
+    "version": "1.0.0",
     "description": "",
-    "main": "./dist/mjs/index.mjs",
-    "type": "module",
+    "keywords": [],
     "scripts": {
         "dev": "ts-node -r tsconfig-paths/register _test/index.ts",
         "build": "npm run format && rollup -c",
         "format": "prettier --ignore-path .prettierignore --write src/"
     },
+    "main": "./dist/mjs/index.mjs",
+    "type": "module",
+    "types": "./dist/types/index.d.ts",
     "files": [
         "dist",
         "package.json"
@@ -16,11 +18,10 @@
     "exports": {
         ".": {
             "import": "./dist/mjs/index.mjs",
-            "require": "./dist/cjs/index.cjs"
+            "require": "./dist/cjs/index.cjs",
+            "types": "./dist/types/index.d.ts"
         }
     },
-    "types": "./dist/types/index.d.ts",
-    "keywords": [],
     "publishConfig": {
         "registry": "https://npm.pkg.github.com/@guiurm"
     },
