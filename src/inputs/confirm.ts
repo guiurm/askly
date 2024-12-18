@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+// import chalk from 'chalk';
 import { clearLastLine, createCustomInterface } from '../utils/readlineUtils';
 
 export const confirm = (message: string) => {
@@ -10,7 +10,8 @@ export const confirm = (message: string) => {
         else clearLastLine();
 
         process.stdout.write(
-            `${message}: ` + (accept ? `${chalk.blueBright('> yes')} /   no ` : `  yes / ${chalk.blueBright('> no')}`)
+            // `${message}: ` + (accept ? `${chalk.blueBright('> yes')} /   no ` : `  yes / ${chalk.blueBright('> no')}`)
+            `${message}: ` + (accept ? `> yes /   no ` : `  yes / > no`)
         );
     };
 

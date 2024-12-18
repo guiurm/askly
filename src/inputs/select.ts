@@ -1,6 +1,6 @@
 import * as readline from 'node:readline';
 
-import chalk from 'chalk';
+// import chalk from 'chalk';
 
 type Choice = {
     name: string;
@@ -43,7 +43,8 @@ export async function select<Choices extends ReadonlyArray<Choice>>({
         console.log(message);
         choices.forEach((choice, index) => {
             if (index === selectedChoiceIndex) {
-                console.log(chalk.blueBright(`> ${choice.name}`));
+                // console.log(chalk.blueBright(`> ${choice.name}`));
+                console.log(`> ${choice.name}`);
             } else {
                 console.log(`  ${choice.name}`);
             }
