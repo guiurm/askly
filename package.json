@@ -5,21 +5,26 @@
     "keywords": [],
     "scripts": {
         "dev": "ts-node -r tsconfig-paths/register _test/index.ts",
-        "build": "npm run format && rollup -c",
+        "build": "npm run format && npm run build:mjs && npm run build:cjs && rollup -c",
+        "build:mjs": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
+        "build:cjs": "tsc --project tsconfig-cjs.json && tsc-alias -p tsconfig-cjs.json",
         "format": "prettier --ignore-path .prettierignore --write src/"
     },
-    "main": "./dist/mjs/index.mjs",
+    "main": "./dist/index.mjs",
     "type": "module",
-    "types": "./dist/types/index.d.ts",
+    "private": true,
+    "types": "./dist/index.d.ts",
     "files": [
         "dist",
+        "LICENSE",
+        "README.md",
         "package.json"
     ],
     "exports": {
         ".": {
-            "import": "./dist/mjs/index.mjs",
-            "require": "./dist/cjs/index.cjs",
-            "types": "./dist/types/index.d.ts"
+            "import": "./dist/index.mjs",
+            "require": "./dist/index.cjs",
+            "types": "./dist/index.d.ts"
         }
     },
     "publishConfig": {
